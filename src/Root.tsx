@@ -14,8 +14,8 @@ export class Root extends Component<{}, State> {
     opened: false
   };
 
-  public toggle(opened: boolean) {
-    (this.state as any).opened = opened;
+  public toggle() {
+    this.setState( {opened : !this.state.opened});
   }
 
   public invite(name: string) {
@@ -27,10 +27,11 @@ export class Root extends Component<{}, State> {
   }
 
   public render() {
+    const toggle = this.toggle.bind(this)
     return (
       <>
-        <button onClick={() => this.toggle(true)}>Open invites list</button>
-        <Modal opened={this.state.opened} onClose={() => this.toggle(false)}>
+        <button onClick={toggle}>Open invites list</button>
+        <Modal opened={this.state.opened} onClose={toggle}>
           <Invites
             invites={this.state.invites}
             onAdd={this.invite.bind(this)}
