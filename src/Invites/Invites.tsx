@@ -21,7 +21,7 @@ export const Invites: FC<Props> = ({ invites, onAdd }) => {
 
   useEffect(() => {
     setName("");
-  }, [invites]);
+  }, [invites.length]);
 
   return (
     <div className="invites">
